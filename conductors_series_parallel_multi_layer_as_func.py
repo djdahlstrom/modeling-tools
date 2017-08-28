@@ -4,7 +4,7 @@ script to calculate effective hydraulic conctivity for a layered sequence in:
 - series (layering normal to flow direction), and
 - parallel (layering parallel to flow direction)
 
-base on:
+based on:
 script to calculate effective horizontal and vertical hydraulic
 conductivity based on the approach using the Hydrogeologic-unit Flow Package
 
@@ -19,6 +19,8 @@ U.S. GEOLOGICAL SURVEY
 Open-File Report 00-342
 
 see also eqtn. 49, p. 5-12 in MF88 doc
+
+edited by djd 8/28/2017
 
 '''
 
