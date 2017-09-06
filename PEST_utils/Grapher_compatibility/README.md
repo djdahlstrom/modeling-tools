@@ -7,7 +7,7 @@ Value
 
 As created by the various PEST utilties, the file is space-delimited. As such, Grapher will read the date and time separately, so graphs cannot be readily made.
 
-The utility make_bore_sample_grapher_compatible_cmd_arg.py reads a bore sample file and writes out a version that is tab-delimited with the following columns:
+The utility __make_bore_sample_grapher_compatible_cmd_arg.py__ reads a bore sample file and writes out a version that is tab-delimited with the following columns:
 Location
 Date+Time
 Value
