@@ -3,5 +3,7 @@ http://openjump.org/index.html
 
 This folder contains various utility scripts related to OpenJump.
 
-txt2jml.py is a python script that takes as input a text file and converts it into a .jml file (OpenJUMP's version of a shapefile). See the script for more details.
+File name         | Description
+------------------|-----------------------------------------------------------
+__txt2jml.py__ | is a python script that takes as input the name of a text file and converts that file into a .jml file (OpenJUMP's version of a shapefile). An example text file is included (digitized.dat) that is read by default. See the script for more details.
 
