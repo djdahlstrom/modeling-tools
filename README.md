@@ -10,5 +10,6 @@ Folder | Description
 OpenJUMP | Scripts that can be utilized in conjunction with a GIS environment
 PEST_utils | Scripts to facilitate usage of the PEST inverse modeling suite of software
 ParaView   | Scripts to complement usage of the ParaView data analysis and vizualization application
+Analytical_solutions | Scripts of analytical solutions for the responses of hydraulic heads of various types of aquifer to forcing functions such as pumping of wells or variation in river stage
 
 See the README.md file in each folder for more information.
