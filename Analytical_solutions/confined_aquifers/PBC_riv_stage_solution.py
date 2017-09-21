@@ -26,57 +26,49 @@ djdahlstrom
 '''
 
 # aquifer parameters in consistent units
-T = 1000.0
-Sc = 1.0e-3
+T = 500.0
+Sc = 3.2e-3
 
 nu = T/Sc
 
 # distance from river to observation well 
-x = 200.0
+x = 150.0
 
 # discretization
-delta_t = 0.001
-num_steps = 50
+delta_t = 0.002
+num_steps = 60
 
 # response function
-resp_f = zeros((num_steps), dtype=float)
-sys_in = zeros((num_steps), dtype=float)
-sys_inc = zeros((num_steps), dtype=float)
+response_f = zeros((num_steps), dtype=float)
+# input (forcing) function
+input_f = zeros((num_steps), dtype=float)
+# incremental changes in forcing function
+input_inc = zeros((num_steps), dtype=float)
 #
 
 step = 0
 time = 0.0
-converged = 'False'
 
-# construct the response function
-while converged == 'False' and step < num_steps:
+# construct the response function throughout the simulation time
+while step < num_steps:
     time += delta_t
-    resp_f[step] = erfc( x / (2 * sqrt( nu * time ) ) )
-##    #tried to get fancy and save computations if nearly 1
-##    if resp_f[step] > 0.999999:
-##        # converged on 1 for response function - set rest of value to 1
-##        for i in range(step,num_steps):
-##            resp_f[i] = 1.0
-##        converged = 'True'    
+    response_f[step] = erfc( x / (2 * sqrt( nu * time ) ) )
     step += 1
 
 # dummy system input - sine wave
-sys_in = sin(arange(2*pi/51, stop=2*pi, step=2*pi/51, dtype='float'))
+input_f = sin(arange(2*pi/51, stop=2*pi, step=2*pi/51, dtype='float'))
 
-# need to divide sys_in into incremental steps
-for i in range(len(sys_in)):
-    if i == 0:
-        sys_inc[i] = sys_in[i]
-    else:
-        sys_inc[i] = sys_in[i] - sys_in[i-1]
+# divide the forcing function into incremental steps
+for i in range(1,len(input_f)):
+    input_inc[i] = input_f[i] - input_f[i-1]
 
 # note - full convolution makes the sys_out too big (by num_steps - 1) - only
 # use the first num_steps entries. 'same' and 'valid' do not yield the 
 # correct result
-sys_out = convolve(sys_inc, resp_f, mode='full')
+resp = convolve(input_inc, response_f, mode='full')
 
-plot(sys_in)
+plot(input_f)
 hold
-plot(sys_out[0:num_steps])
+plot(resp[0:num_steps])
 show()
 
